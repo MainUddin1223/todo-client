@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const Activity = ({ list }) => {
     const [confirmed, setConfirmend] = useState(false)
     const handleClick = id => {
-        const url = `https://stark-brushlands-16381.herokuapp.com/todoList/${id}`
+        const url = `https://fast-island-71555.herokuapp.com/todoList/${id}`
         fetch(url, {
             method: "DELETE"
         })

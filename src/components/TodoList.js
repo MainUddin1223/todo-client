@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import auth from '../firebase.init';
 import Activity from './Activity';
-import Spinner from './Spinner';
 
 const TodoList = () => {
     const [user, loading] = useAuthState(auth)
@@ -13,7 +12,7 @@ const TodoList = () => {
     const email = user?.email
     console.log(email);
     const { register, formState: { errors }, handleSubmit } = useForm();
-
+    console.log(lists);
 
 
     const onSubmit = (data) => {
@@ -42,12 +41,9 @@ const TodoList = () => {
                 });;
             })
     }
-    const url = `https://fast-island-71555.herokuapp.com/?email=${email}`
+    const url = `https://fast-island-71555.herokuapp.com/todoList?email=${email}`
     useEffect(() => {
-
-        fetch(url, {
-            method: "GET",
-        })
+        fetch(url)
             .then(res => res.json())
             .then(data => {
                 setLists(data)
